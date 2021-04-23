@@ -26,5 +26,7 @@ namespace Dominio.Entidades
         public ESexo Sexo { get; private set; }
         public string Telefone { get; private set; }
         public string Endereco { get; private set; }
+
+        public IEnumerable<Classificado> Classificados { get; private set; }
     }
 }
