@@ -26,6 +26,7 @@ namespace WebApp.Models
 
         public string Telefone { get; set; }
 
+
         [DisplayName("Endereço")]
         public string Endereco { get; set; }
 
