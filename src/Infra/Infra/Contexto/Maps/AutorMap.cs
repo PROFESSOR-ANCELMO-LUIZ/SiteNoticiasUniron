@@ -15,6 +15,7 @@ namespace Infra.Contexto.Maps
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(100).HasColumnType("varchar(100)");
             builder.Property(x => x.Linkdin).HasMaxLength(100).HasColumnType("varchar(100)");
+            builder.Property(x => x.Lattes).HasMaxLength(100).HasColumnType("varchar(100)");
 
             builder.HasMany(x => x.Conteudos).WithOne(x => x.Autor);
         }

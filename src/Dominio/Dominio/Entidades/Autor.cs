@@ -15,6 +15,7 @@ namespace Dominio.Entidades
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Linkdin { get; private set; }
+        public string Lattes { get; private set; }
 
         public IEnumerable<Conteudo> Conteudos { get; private set; }
     }
