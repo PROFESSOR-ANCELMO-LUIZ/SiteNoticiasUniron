@@ -22,17 +22,19 @@ namespace WebApp
       
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>
-            {
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                    mySqlOptionsAction: sqlOptions =>
-                    {
-                        sqlOptions.EnableRetryOnFailure(
-                            maxRetryCount: 10,
-                            maxRetryDelay: TimeSpan.FromSeconds(30),
-                            errorNumbersToAdd: null);
-                    });
-            });
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddDbContext<DataContext>(options =>
+            //{
+            //    options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+            //        mySqlOptionsAction: sqlOptions =>
+            //        {
+            //            sqlOptions.EnableRetryOnFailure(
+            //                maxRetryCount: 10,
+            //                maxRetryDelay: TimeSpan.FromSeconds(30),
+            //                errorNumbersToAdd: null);
+            //        });
+            //});
 
             services.AddControllersWithViews();
         }

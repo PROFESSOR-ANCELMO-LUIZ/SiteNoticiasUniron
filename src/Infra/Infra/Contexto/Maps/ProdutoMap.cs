@@ -14,7 +14,7 @@ namespace Infra.Contexto.Maps
             builder.ToTable("produtos");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Descricao).IsRequired().HasColumnType("Text");
-            builder.Property(x => x.Valor).IsRequired().HasColumnType("decimal(18,2)");
+            builder.Property(x => x.Valor).IsRequired().HasColumnType("decimal");
 
         }
     }
