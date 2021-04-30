@@ -14,8 +14,9 @@ namespace Infra.Contexto.Maps
             builder.ToTable("autores");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(100).HasColumnType("varchar(100)");
-            builder.Property(x => x.Linkdin).HasMaxLength(1000).HasColumnType("varchar(1000)");
+            builder.Property(x => x.Linkdin).HasMaxLength(100).HasColumnType("varchar(100)");
 
+            builder.HasMany(x => x.Conteudos).WithOne(x => x.Autor);
         }
     }
 }

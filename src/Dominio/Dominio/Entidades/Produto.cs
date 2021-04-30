@@ -20,5 +20,7 @@ namespace Dominio.Entidades
         public string Descricao { get; private set; }
         public decimal Valor { get; private set; }
         public ETipoProduto TipoDoProduto { get; private set; }
+
+        public Classificado Classificado { get; set; }
     }
 }
