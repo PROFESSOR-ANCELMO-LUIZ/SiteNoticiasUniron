@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210430011805_migracaoInicial")]
-    partial class migracaoInicial
+    [Migration("20210506232428_inicialMigration")]
+    partial class inicialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,7 @@ namespace Infra.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -72,7 +73,7 @@ namespace Infra.Migrations
                     b.HasIndex("ProdutoId")
                         .IsUnique();
 
-                    b.ToTable("Classificados");
+                    b.ToTable("classificados");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Cliente", b =>
@@ -83,23 +84,27 @@ namespace Infra.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DataDeNascimento")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("DATE");
 
                     b.Property<string>("Endereco")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(100);
 
-                    b.Property<int>("Sexo")
-                        .HasColumnType("int");
+                    b.Property<string>("Sexo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(15)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("clientes");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Conteudo", b =>
@@ -113,19 +118,21 @@ namespace Infra.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataDoCadastro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("DATE");
 
                     b.Property<string>("LinkImagem")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Texto")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("TipoDeConteudoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Titulo")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("varchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.HasKey("Id");
 
@@ -133,7 +140,7 @@ namespace Infra.Migrations
 
                     b.HasIndex("TipoDeConteudoId");
 
-                    b.ToTable("Conteudos");
+                    b.ToTable("conteudos");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Produto", b =>
@@ -144,17 +151,18 @@ namespace Infra.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("Text");
 
                     b.Property<int>("TipoDoProduto")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Produtos");
+                    b.ToTable("produtos");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.TipoDeConteudo", b =>
@@ -165,11 +173,13 @@ namespace Infra.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
-                    b.ToTable("TipoDeConteudos");
+                    b.ToTable("tipoDeConteudos");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Classificado", b =>

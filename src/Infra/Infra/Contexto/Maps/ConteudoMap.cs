@@ -11,7 +11,7 @@ namespace Infra.Contexto.Maps
             builder.ToTable("conteudos");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Titulo).IsRequired().HasMaxLength(1000).HasColumnType("varchar(1000)");
-            builder.Property(x => x.Texto).HasColumnType("text()");
+            builder.Property(x => x.Texto).HasColumnType("text");
             builder.Property(x => x.DataDoCadastro).IsRequired().HasColumnType("DATE");
 
         }
