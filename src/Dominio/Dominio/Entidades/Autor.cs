@@ -6,10 +6,11 @@ namespace Dominio.Entidades
 {
     public class Autor
     {
-        public Autor(string nome, string linkdin)
+        public Autor(string nome, string linkdin, string lattes)
         {
             Nome = nome;
             Linkdin = linkdin;
+            Lattes = lattes;
         }
 
         public int Id { get; private set; }

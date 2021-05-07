@@ -1,5 +1,7 @@
 
 using Infra.Contexto;
+using Infra.Persistencias;
+using Infra.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +37,8 @@ namespace WebApp
             //                errorNumbersToAdd: null);
             //        });
             //});
+
+            services.AddScoped<IAutorRepository, AutorRepository>();
 
             services.AddControllersWithViews();
         }
