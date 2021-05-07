@@ -18,5 +18,12 @@ namespace Dominio.Entidades
         public string Lattes { get; private set; }
 
         public IEnumerable<Conteudo> Conteudos { get; private set; }
+
+        public void AtualizarAutor(string nome, string linkedin, string lattes)
+        {
+            this.Nome = nome;
+            this.Linkdin = linkedin;
+            this.Lattes = lattes;
+        }
     }
 }
