@@ -1,5 +1,5 @@
 ﻿using Dominio.Entidades;
-using Infra.Repositories;
+using Dominio.IRepositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

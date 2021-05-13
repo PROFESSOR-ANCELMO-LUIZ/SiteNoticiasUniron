@@ -1,5 +1,5 @@
-﻿using Historias.Autores;
-using Infra.Repositories;
+﻿using Dominio.IRepositories;
+using Historias.Autores;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

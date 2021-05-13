@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Infra.Repositories
+namespace Dominio.IRepositories
 {
     public interface IAutorRepository
     {

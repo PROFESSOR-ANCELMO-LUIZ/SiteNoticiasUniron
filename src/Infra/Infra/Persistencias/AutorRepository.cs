@@ -1,6 +1,6 @@
 ﻿using Dominio.Entidades;
+using Dominio.IRepositories;
 using Infra.Contexto;
-using Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
