@@ -54,5 +54,67 @@ namespace WebApp.Controllers
 
             return View(autorViewModel);
         }
+
+        public async Task<IActionResult> Alterar(int id)
+        {
+            var autor = await _consultasAutor.BuscarPeloId(id);
+
+            if (autor == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var autorViewModel = AutorFactory.MapearAutorViewModel(autor);
+
+            return View(autorViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Alterar(int id, AutorViewModel autorViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(autorViewModel);
+            }
+
+            var autor = AutorFactory.MapearAutor(autorViewModel);
+
+            await _alterarAutor.Executar(id, autor);
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Detalhar(int id)
+        {
+            var autor = await _consultasAutor.BuscarPeloId(id);
+
+            if (autor == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var autorViewModel = AutorFactory.MapearAutorViewModel(autor);
+
+            return View(autorViewModel);
+        }
+
+        public async Task<IActionResult> Excluir(int id)
+        {
+            var autor = await _consultasAutor.BuscarPeloId(id);
+
+            if (autor == null)
+            {
+                return RedirectToAction("Index");
+            }
+               
+
+            await _excluirAutor.Executar(autor);
+
+            return RedirectToAction("Index");
+        }
+
     }
+
 }
+

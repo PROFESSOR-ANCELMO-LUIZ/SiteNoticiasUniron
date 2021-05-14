@@ -26,23 +26,26 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Linkdin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lattes)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Linkdin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lattes)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Alterar", "Alterar", new { id = item.Id }) -
+                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id }) -
+                    @Html.ActionLink("Excluir", "Excluir", new {  id=item.Id  })
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

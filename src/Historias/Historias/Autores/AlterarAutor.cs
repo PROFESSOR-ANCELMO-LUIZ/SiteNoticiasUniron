@@ -17,10 +17,9 @@ namespace Historias.Autores
         {
             var dadosDoAutor = await _autorRepository.BuscarPorId(id);
 
-            dadosDoAutor.AtualizarAutor(autor.Nome, autor.Linkdin, autor.Linkdin);
+            dadosDoAutor.AtualizarAutor(autor.Nome, autor.Linkdin, autor.Lattes);
 
             await _autorRepository.Alterar(dadosDoAutor);
-
         }
     }
 }
