@@ -39,11 +39,11 @@
                     @Html.DisplayFor(modelItem => item.Lattes)
                 </td>
                 <td>
-
-                    @Html.ActionLink("Alterar", "Alterar", new { id = item.Id }) -
-                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id }) -
-                    @Html.ActionLink("Excluir", "Excluir", new {  id=item.Id  })
-
+                    <div class="btn-group">
+                        @Html.ActionLink("Alterar", "Alterar", new { id = item.Id }, new {@class= "btn btn-outline-info" })
+                        @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id }, new { @class = "btn btn-outline-info" })
+                        @Html.ActionLink("Excluir", "Excluir", new { id = item.Id }, new { @class = "btn btn-outline-danger", @onClick = "javascript:return" + " confirm('Confirma a Exclusão?')" })
+                    </div>
                 </td>
             </tr>
         }
